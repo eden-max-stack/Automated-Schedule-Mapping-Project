@@ -1,0 +1,36 @@
+<!-- to get input for template details from user -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> {% block title %} Add a New Template{% endblock %}</h1>
+    <form method="post">
+        <label for="title">Template Name</label>
+        <br>
+        <input type="text" name="template_name"
+               placeholder="Template title"
+               value="{{ request.form['template_name'] }}"></input>
+        <br>
+
+        <label for="content">Template Description</label>
+        <br>
+        <textarea name="template_description"
+                  placeholder="Template content"
+                  rows="15"
+                  cols="60"
+                  >{{ request.form['template_description'] }}</textarea>
+        <br>
+
+        <label for="content">Template Email ID</label>
+        <br>
+        <textarea name="email_id"
+                  placeholder="Template content"
+                  rows="15"
+                  cols="60"
+                  >{{ request.form['email_id'] }}</textarea>
+        <br>
+
+        <br>
+        <button type="submit" name="addTemplate">Add Template</button>
+    </form>
+{% endblock %}

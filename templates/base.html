@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        nav a {
+            color: #181818;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        h1 {
+            color: #181818;
+            font-size: 5em;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Templates</a>
+        <a href="{{ url_for('create_template') }}">Add Template</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
