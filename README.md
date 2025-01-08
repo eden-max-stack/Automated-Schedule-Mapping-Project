@@ -106,6 +106,7 @@ This project (one of my first ones, and something I was very proud of then) is a
 - Add validation for database inputs to prevent SQL injection.
 - Enhance the UI with modern design frameworks (e.g., Bootstrap).
 - Allow dynamic event scheduling through the web interface.
+- Planning on using MERN Stack.
 
 ---
 
