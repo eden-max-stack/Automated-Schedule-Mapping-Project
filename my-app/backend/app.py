@@ -3,24 +3,22 @@ from datetime import date, datetime #for conversion of date read from html into 
 import mysql.connector #for storing data collected in sql db
 import main #importing functions from other python file(s)
 import os
+from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 import signal
 from werkzeug.serving import make_server
 
 app = Flask(__name__)
 
-#sql connection
-app.config['MYSQL_USER'] = 'root' #set to 'root' if using default
-app.config['MYSQL_HOST'] = 'localhost' #set to 'localhost' if using default
-app.config['MYSQL_DB'] = 'gcapdb' #create a db using MySQL and change it to db's name
-app.config['MYSQL_PASSWORD'] = '' #the password to user in MySQL
+load_dotenv()
 
 db_config = {
-    "host": app.config['MYSQL_HOST'],
-    "user": app.config['MYSQL_USER'],
-    "password": app.config['MYSQL_PASSWORD'],
-    "database": app.config['MYSQL_DB'],
+    "host": "localhost",
+    "user": "root",
+    "password": os.getenv('MYSQL_PASSWORD'),
+    "database": os.getenv('MYSQL_DB'),
 }
+
 
 try:
     conn = mysql.connector.connect(**db_config)
