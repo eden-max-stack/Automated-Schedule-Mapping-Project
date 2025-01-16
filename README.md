@@ -1,5 +1,8 @@
 # Automated Schedule-Mapping Project
 
+## IMPORTANT NOTE
+This project is currently undergoing migration from Flask and SQL to the MERN stack. 
+
 ## Overview
 This project (one of my first ones, and something I was very proud of then) is a Flask-based web application that enables users to create templates and manage events. It uses MySQL for data storage and integrates with the Google Calendar API to facilitate event scheduling. This was created to sovle the problem of mapping elected subjects (by student) with a unified time table schedule across all departments in my university. It is an initial prototype.
 
