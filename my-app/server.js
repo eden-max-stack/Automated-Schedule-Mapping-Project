@@ -1,6 +1,7 @@
 const express = require('express');
 const { logger } = require('./middleware/logEvents');
 const cors = require('cors');
+const errorHandler = require('./middleware/errorHandler');
 const corsOptions = require('./config/corsOptions');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
@@ -27,8 +28,9 @@ app.use(cookieParser());
 
 // routes
 app.use('/', require('./routes/root'));
-app.use('/shutdown', require('./routes/shutdown'));
+// app.use('/shutdown', require('./routes/shutdown'));
 app.use('/create-template', require('./routes/createTemplate'));
+app.use('/get-templates', require('./routes/getTemplates'));
 
 // custom error handling
 app.use(errorHandler);

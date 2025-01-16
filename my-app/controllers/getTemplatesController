@@ -1,0 +1,16 @@
+const db = require('../config/db');
+
+const getTemplates = async (req, res) => {
+    try {
+        const [results] = await db.execute(`SELECT * FROM templates`);
+        console.log('Results: ', results);
+        res.json(results);
+    } catch (err) {
+        console.err('Error: ', err);
+        res.status(500).json({ 'message': 'Error retrieving templates'});
+    }
+};
+
+module.exports = {
+    getTemplates
+}
