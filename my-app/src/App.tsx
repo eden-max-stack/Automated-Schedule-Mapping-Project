@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate  } from 'react-router-dom';
 import CreateTemplate from './CreateTemplate';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -6,6 +6,7 @@ import axios from 'axios';
 const App: React.FC = () => {
   const [data, setData] = useState<any[]>([]); // to hold templates
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,20 @@ const App: React.FC = () => {
     return () => {
       console.log('Cleanup called');
     };
-  }, []); // Empty dependency array ensures this runs only once after the initial rende
+  }, []); // Empty dependency array ensures this runs only once after the initial render
+
+  // const handleAddEvent = async (templateId: string) => {
+  //   navigate('/:templateId/addEvent');
+  // }
+
+  // const renderTemplateButtons = (templateId: string) => {
+  //   return (
+  //     <div className="buttons">
+  //       <button onClick={handleAddEvent(templateId)}>Add Event</button>
+  //       <button onClick={handleAddToGC}>Add to Google Calendar</button>
+  //     </div>
+  //   )
+  // }
   return (
     <>
       <div className='app-container'>
@@ -49,6 +63,9 @@ const App: React.FC = () => {
 
                     <p>Description: {template.template_desc}</p>
                     <p>Email: {template.email_id}</p>
+                    <div className="buttons-container">
+                      {renderTemplateButtons(templateId)}
+                    </div>
                   </div>
                 );
               })}
